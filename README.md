@@ -31,17 +31,6 @@ Windows OS (uses Windows API)
 
 C++ Compiler (e.g., GCC, MSVC)
 
-How to Run
-Compile the Code:
-
-bash
-Copy
-g++ snake.cpp -o snake.exe -static -luser32 -lwinmm
-Run the Executable:
-
-bash
-Copy
-snake.exe
 Controls
 W/↑ Arrow: Move Up
 
