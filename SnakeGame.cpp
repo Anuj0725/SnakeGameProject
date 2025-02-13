@@ -45,7 +45,7 @@ void GameInit() {
     fruitCordX = rand() % width;
     fruitCordY = rand() % height;
     playerScore = 0;
-    snakeTailLen = 3;
+    snakeTailLen = 2;
 
     for (int i = 0; i < snakeTailLen; i++) {
         snakeTailX[i] = x - (i + 1);
