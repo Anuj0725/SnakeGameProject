@@ -89,7 +89,7 @@ void DrawGame(string playerName, int snakeColor) {
 
     cout << string(width + 2, '=') << "\n";
     SetColor(7);
-    cout << playerName << " Your Score: " << playerScore << "\n";
+    cout << playerName << "'s Score: " << playerScore << "\n";
 }
 
 int GetNextColor(int currentColor) {
@@ -162,12 +162,15 @@ int main() {
     string playerName;
     int dfc = 50;
     int snakeColor = 10;
-
+        
     do {
+        cout<<"\n Enter Your Name ::";
+        cin>>playerName;
         GameInit();
         HideCursor();
-
+        
         while (!isGameOver) {
+            
             DrawGame(playerName, snakeColor);
             UserInput();
             UpdateGame(snakeColor);
@@ -175,7 +178,7 @@ int main() {
         }
 
         SetCursorPosition(0, height + 4);
-        cout << "Game Over! Final Score: " << playerScore << "\n";
+        cout << "Game Over! "<<playerName<<" Score: " << playerScore << "\n";
         cout << "Do you want to play again?\nPress r to restart ";
     } while (_getch() == 'r');
 
