@@ -55,11 +55,10 @@ void GameInit() {
 
 void DrawGame(string playerName, int snakeColor) {
     SetCursorPosition(0, 0);
-
-    cout << string(width + 2, '-') << "\n";
+    cout << string(width + 2, '=') << "\n";
 
     for (int i = 0; i < height; i++) {
-        cout << "|"; 
+        cout << "||"; 
         for (int j = 0; j < width; j++) {
             if (i == y && j == x) {
                 SetColor(snakeColor);
@@ -85,22 +84,20 @@ void DrawGame(string playerName, int snakeColor) {
                 }
             }
         }
-        cout << "|\n"; 
+        cout << "||\n"; 
     }
 
-    cout << string(width + 2, '-') << "\n";
+    cout << string(width + 2, '=') << "\n";
     SetColor(7);
     cout << playerName << " Your Score: " << playerScore << "\n";
 }
 
 int GetNextColor(int currentColor) {
-    switch (currentColor) {
-        case 10: return 11;
-        case 11: return 12;
-        case 12: return 13;
-        case 13: return 14;
-        case 14: return 15;
-        default: return 10;
+    if (currentColor >=10 && currentColor<=14)
+    {
+        return ++currentColor; 
+    }else{
+        return 10;
     }
 }
 
@@ -149,40 +146,38 @@ void UpdateGame(int &snakeColor) {
     }
 }
 
-
-int SetDifficulty() {
-    return 50;
-}
-
 void UserInput() {
     if (_kbhit()) {
         switch (_getch()) {
-            case 'a': if (sDir != RIGHT) sDir = LEFT; break;
-            case 'd': if (sDir != LEFT) sDir = RIGHT; break;
-            case 'w': if (sDir != DOWN) sDir = UP; break;
-            case 's': if (sDir != UP) sDir = DOWN; break;
-            case 'x': isGameOver = true; break;
+            case 'a': case 75: if (sDir != RIGHT) sDir = LEFT; break;
+            case 'd': case 77: if (sDir != LEFT) sDir = RIGHT; break;
+            case 'w': case 72: if (sDir != DOWN) sDir = UP; break;
+            case 's': case 80: if (sDir != UP) sDir = DOWN; break;
+            case 'q': isGameOver = true; break;
         }
     }
 }
 
 int main() {
     string playerName;
-    int dfc = SetDifficulty();
-
-    GameInit();
-    HideCursor();
+    int dfc = 50;
     int snakeColor = 10;
 
-    while (!isGameOver) {
-        DrawGame(playerName, snakeColor);
-        UserInput();
-        UpdateGame(snakeColor);
-        Sleep(dfc);
-    }
+    do {
+        GameInit();
+        HideCursor();
 
-    SetCursorPosition(0, height + 4);
-    cout << "Game Over! Final Score: " << playerScore << "\n";
-    system("pause");
+        while (!isGameOver) {
+            DrawGame(playerName, snakeColor);
+            UserInput();
+            UpdateGame(snakeColor);
+            Sleep(dfc);
+        }
+
+        SetCursorPosition(0, height + 4);
+        cout << "Game Over! Final Score: " << playerScore << "\n";
+        cout << "Do you want to play again?\nPress r to restart ";
+    } while (_getch() == 'r');
+
     return 0;
 }
