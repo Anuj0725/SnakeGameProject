@@ -9,6 +9,7 @@ Group Members:
 Overview:
 
 Snake Game in C++
+
 A classic Snake game implementation in C++ using Windows Console API. Navigate the snake to eat fruits, grow longer, and avoid collisions.
 
 Features
