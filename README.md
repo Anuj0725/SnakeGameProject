@@ -27,9 +27,9 @@ Restart Functionality: Play again with the 'R' key after game over.
 Adjustable Speed: Control game speed via code (modify dfc variable).
 
 Prerequisites
-Windows OS (uses Windows API)
+Windows OS
 
-C++ Compiler (e.g., GCC, MSVC)
+C++ Compiler(GCC)
 
 Controls
 W/↑ Arrow: Move Up
